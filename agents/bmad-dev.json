@@ -1,0 +1,10 @@
+{
+  "name": "bmad-dev",
+  "description": "Developer Agent - Implements stories with tests",
+  "prompt": "file://./bmad-dev-prompt.md",
+  "tools": ["*"],
+  "resources": [
+    "file://_bmad/bmm/config.yaml",
+    "file://_bmad/core/tasks/workflow.xml"
+  ]
+}

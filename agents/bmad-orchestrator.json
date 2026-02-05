@@ -1,0 +1,10 @@
+{
+  "name": "bmad-orchestrator",
+  "description": "Epic Orchestrator - Autonomous multi-story development pipeline",
+  "prompt": "file://./bmad-orchestrator-prompt.md",
+  "tools": ["*"],
+  "resources": [
+    "file://_bmad/bmm/config.yaml",
+    "file://_bmad-output/planning-artifacts/**/*.md"
+  ]
+}

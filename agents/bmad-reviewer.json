@@ -1,0 +1,10 @@
+{
+  "name": "bmad-reviewer",
+  "description": "Code Reviewer - Adversarial review finding real issues",
+  "prompt": "file://./bmad-reviewer-prompt.md",
+  "tools": ["*"],
+  "resources": [
+    "file://_bmad/bmm/config.yaml",
+    "file://_bmad/core/tasks/workflow.xml"
+  ]
+}

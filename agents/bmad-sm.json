@@ -1,0 +1,10 @@
+{
+  "name": "bmad-sm",
+  "description": "Scrum Master - Creates well-structured stories from epics",
+  "prompt": "file://./bmad-sm-prompt.md",
+  "tools": ["*"],
+  "resources": [
+    "file://_bmad/bmm/config.yaml",
+    "file://_bmad/core/tasks/workflow.xml"
+  ]
+}

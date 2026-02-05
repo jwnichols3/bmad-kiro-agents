@@ -1,0 +1,9 @@
+{
+  "name": "bmad-qa",
+  "description": "QA Engineer - Creates Playwright E2E tests",
+  "prompt": "file://./bmad-qa-prompt.md",
+  "tools": ["*"],
+  "resources": [
+    "file://_bmad/bmm/config.yaml"
+  ]
+}
