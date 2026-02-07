@@ -1,0 +1,10 @@
+{
+  "name": "bmad-pm",
+  "description": "Product Manager - PRDs, epics, stories, readiness checks",
+  "prompt": "file://./bmad-pm-prompt.md",
+  "tools": ["*"],
+  "resources": [
+    "file://_bmad/bmm/config.yaml",
+    "file://_bmad/core/tasks/workflow.xml"
+  ]
+}

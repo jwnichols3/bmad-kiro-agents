@@ -1,0 +1,9 @@
+{
+  "name": "bmad-ux",
+  "description": "UX Designer - User experience and UI design",
+  "prompt": "file://./bmad-ux-prompt.md",
+  "tools": ["*"],
+  "resources": [
+    "file://_bmad/bmm/config.yaml"
+  ]
+}

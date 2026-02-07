@@ -1,0 +1,10 @@
+{
+  "name": "bmad-architect",
+  "description": "Architect - Technical design and architecture decisions",
+  "prompt": "file://./bmad-architect-prompt.md",
+  "tools": ["*"],
+  "resources": [
+    "file://_bmad/bmm/config.yaml",
+    "file://_bmad/core/tasks/workflow.xml"
+  ]
+}

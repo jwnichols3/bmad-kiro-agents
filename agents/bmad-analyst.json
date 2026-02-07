@@ -1,0 +1,10 @@
+{
+  "name": "bmad-analyst",
+  "description": "Business Analyst - Brainstorming, research, product briefs",
+  "prompt": "file://./bmad-analyst-prompt.md",
+  "tools": ["*"],
+  "resources": [
+    "file://_bmad/bmm/config.yaml",
+    "file://_bmad/core/tasks/workflow.xml"
+  ]
+}
