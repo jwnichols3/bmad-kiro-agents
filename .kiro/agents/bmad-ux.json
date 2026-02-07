@@ -2,7 +2,7 @@
   "name": "bmad-ux",
   "description": "UX Designer - User experience and UI design",
   "prompt": "file://./bmad-ux-prompt.md",
-  "model": "claude-opus-4-6",
+  "model": "claude-opus-4.5",
   "tools": ["*"],
   "resources": [
     "file://_bmad/bmm/config.yaml"

@@ -82,15 +82,15 @@ Implementation workflows (create-story, dev-story, code-review, qa-automate) are
 
 ## Model Configuration
 
-All agents use `claude-opus-4-6` (Anthropic's most capable model, released Feb 5, 2026).
+All agents use `claude-opus-4.5` via the `"model"` field in each agent JSON.
 
-- Set via `"model"` field in each agent JSON
-- Kiro confirmed experimental support on Feb 5, 2026
-- 2.2x credit multiplier (same as Opus 4.5)
+- 2.2x credit multiplier
+- Available to Pro, Pro+, and Power tier subscribers
 - Subagents inherit the model from their agent configuration
-- Note: Opus 4.6 is available to Pro, Pro+, and Power tier subscribers only
+- Also set the global default: `kiro-cli settings chat.defaultModel claude-opus-4.5`
+- Or in-session: `/model` → select Opus 4.5 → `/model set-current-as-default`
 
-**Important**: The `model` field in agent JSON controls the model for that agent when run directly OR when spawned as a subagent. This means setting it on every agent config ensures consistency across the entire pipeline.
+**Note**: Opus 4.6 (released Feb 5, 2026) has experimental Kiro support but the `model` field may not yet recognize it. Use `claude-opus-4.5` until 4.6 is fully integrated.
 
 ---
 

@@ -2,7 +2,7 @@
   "name": "bmad-dev-story",
   "description": "Implement story with tests following strict task order",
   "prompt": "file://./bmad-dev-story-prompt.md",
-  "model": "claude-opus-4-6",
+  "model": "claude-opus-4.5",
   "tools": [
     "*"
   ],

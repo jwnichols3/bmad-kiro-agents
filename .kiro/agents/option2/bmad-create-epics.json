@@ -2,7 +2,7 @@
   "name": "bmad-create-epics",
   "description": "Create epics and stories from PRD and architecture",
   "prompt": "file://./bmad-create-epics-prompt.md",
-  "model": "claude-opus-4-6",
+  "model": "claude-opus-4.5",
   "tools": [
     "*"
   ],

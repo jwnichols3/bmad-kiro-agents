@@ -2,7 +2,7 @@
   "name": "bmad-dev-skills",
   "description": "Developer with skills-based workflow loading - story implementation, code review",
   "prompt": "file://./bmad-dev-skills-prompt.md",
-  "model": "claude-opus-4-6",
+  "model": "claude-opus-4.5",
   "tools": ["*"],
   "resources": [
     "file://_bmad/bmm/config.yaml",

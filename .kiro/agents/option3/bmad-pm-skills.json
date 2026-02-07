@@ -2,7 +2,7 @@
   "name": "bmad-pm-skills",
   "description": "Product Manager with skills-based workflow loading - PRDs, epics, stories, readiness",
   "prompt": "file://./bmad-pm-skills-prompt.md",
-  "model": "claude-opus-4-6",
+  "model": "claude-opus-4.5",
   "tools": ["*"],
   "resources": [
     "file://_bmad/bmm/config.yaml",

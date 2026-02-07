@@ -2,7 +2,7 @@
   "name": "bmad-create-ux",
   "description": "Create UX design document",
   "prompt": "file://./bmad-create-ux-prompt.md",
-  "model": "claude-opus-4-6",
+  "model": "claude-opus-4.5",
   "tools": [
     "*"
   ],

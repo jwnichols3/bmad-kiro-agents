@@ -2,7 +2,7 @@
   "name": "bmad-check-readiness",
   "description": "Check implementation readiness across PRD, UX, architecture",
   "prompt": "file://./bmad-check-readiness-prompt.md",
-  "model": "claude-opus-4-6",
+  "model": "claude-opus-4.5",
   "tools": [
     "*"
   ],

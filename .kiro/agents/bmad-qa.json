@@ -2,7 +2,7 @@
   "name": "bmad-qa",
   "description": "QA Engineer - Creates Playwright E2E tests",
   "prompt": "file://./bmad-qa-prompt.md",
-  "model": "claude-opus-4-6",
+  "model": "claude-opus-4.5",
   "tools": ["*"],
   "resources": [
     "file://_bmad/bmm/config.yaml"

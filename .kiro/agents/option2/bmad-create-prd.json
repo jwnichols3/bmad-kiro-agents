@@ -2,7 +2,7 @@
   "name": "bmad-create-prd",
   "description": "Create PRD through structured workflow facilitation",
   "prompt": "file://./bmad-create-prd-prompt.md",
-  "model": "claude-opus-4-6",
+  "model": "claude-opus-4.5",
   "tools": [
     "*"
   ],
