@@ -1,0 +1,19 @@
+{
+  "name": "bmad-orchestrator",
+  "description": "Epic Orchestrator - Autonomous multi-story development pipeline",
+  "prompt": "file://./bmad-orchestrator-prompt.md",
+  "model": "claude-opus-4-6",
+  "tools": ["*"],
+  "toolsSettings": {
+    "subagent": {
+      "trustedAgents": ["bmad-*"],
+      "availableAgents": ["bmad-*"]
+    }
+  },
+  "resources": [
+    "file://_bmad/bmm/config.yaml",
+    "file://_bmad-output/planning-artifacts/**/*.md"
+  ],
+  "keyboardShortcut": "ctrl+0",
+  "welcomeMessage": "🎯 Orchestrator ready — which Epic should I execute?"
+}

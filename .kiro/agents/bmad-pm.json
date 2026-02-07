@@ -1,0 +1,13 @@
+{
+  "name": "bmad-pm",
+  "description": "Product Manager - PRDs, epics, stories, readiness checks",
+  "prompt": "file://./bmad-pm-prompt.md",
+  "model": "claude-opus-4-6",
+  "tools": ["*"],
+  "resources": [
+    "file://_bmad/bmm/config.yaml",
+    "file://_bmad/core/tasks/workflow.xml"
+  ],
+  "keyboardShortcut": "ctrl+2",
+  "welcomeMessage": "📋 John here — PRDs, epics, stories, or readiness checks. What's the mission?"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "bmad-check-readiness",
+  "description": "Check implementation readiness across PRD, UX, architecture",
+  "prompt": "file://./bmad-check-readiness-prompt.md",
+  "model": "claude-opus-4-6",
+  "tools": [
+    "*"
+  ],
+  "resources": [
+    "file://_bmad/bmm/config.yaml",
+    "file://_bmad/core/tasks/workflow.xml"
+  ]
+}

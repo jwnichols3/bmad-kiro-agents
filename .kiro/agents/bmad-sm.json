@@ -1,0 +1,13 @@
+{
+  "name": "bmad-sm",
+  "description": "Scrum Master - Creates well-structured stories from epics",
+  "prompt": "file://./bmad-sm-prompt.md",
+  "model": "claude-opus-4-6",
+  "tools": ["*"],
+  "resources": [
+    "file://_bmad/bmm/config.yaml",
+    "file://_bmad/core/tasks/workflow.xml"
+  ],
+  "keyboardShortcut": "ctrl+5",
+  "welcomeMessage": "🏃 Bob here — sprint planning or story creation. What's next?"
+}

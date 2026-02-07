@@ -1,0 +1,13 @@
+{
+  "name": "bmad-code-review",
+  "description": "Adversarial code review finding 3-10 issues with auto-fix",
+  "prompt": "file://./bmad-code-review-prompt.md",
+  "model": "claude-opus-4-6",
+  "tools": [
+    "*"
+  ],
+  "resources": [
+    "file://_bmad/bmm/config.yaml",
+    "file://_bmad/core/tasks/workflow.xml"
+  ]
+}

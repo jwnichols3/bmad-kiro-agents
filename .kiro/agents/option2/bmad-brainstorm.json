@@ -1,0 +1,12 @@
+{
+  "name": "bmad-brainstorm",
+  "description": "Brainstorm project ideas through creative techniques",
+  "prompt": "file://./bmad-brainstorm-prompt.md",
+  "model": "claude-opus-4-6",
+  "tools": [
+    "*"
+  ],
+  "resources": [
+    "file://_bmad/bmm/config.yaml"
+  ]
+}

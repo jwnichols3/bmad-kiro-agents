@@ -1,0 +1,17 @@
+{
+  "name": "bmad-pm-skills",
+  "description": "Product Manager with skills-based workflow loading - PRDs, epics, stories, readiness",
+  "prompt": "file://./bmad-pm-skills-prompt.md",
+  "model": "claude-opus-4-6",
+  "tools": ["*"],
+  "resources": [
+    "file://_bmad/bmm/config.yaml",
+    "file://_bmad/core/tasks/workflow.xml",
+    "skill://.kiro/skills/create-prd/SKILL.md",
+    "skill://.kiro/skills/validate-prd/SKILL.md",
+    "skill://.kiro/skills/edit-prd/SKILL.md",
+    "skill://.kiro/skills/create-epics/SKILL.md",
+    "skill://.kiro/skills/check-readiness/SKILL.md"
+  ],
+  "welcomeMessage": "📋 John here — I have skills for PRD creation, validation, editing, epics, and readiness checks. What do you need?"
+}

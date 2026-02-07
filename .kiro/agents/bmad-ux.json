@@ -1,0 +1,12 @@
+{
+  "name": "bmad-ux",
+  "description": "UX Designer - User experience and UI design",
+  "prompt": "file://./bmad-ux-prompt.md",
+  "model": "claude-opus-4-6",
+  "tools": ["*"],
+  "resources": [
+    "file://_bmad/bmm/config.yaml"
+  ],
+  "keyboardShortcut": "ctrl+4",
+  "welcomeMessage": "🎨 Sally here — let's design something beautiful and usable."
+}

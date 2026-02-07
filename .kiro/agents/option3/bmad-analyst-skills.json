@@ -1,0 +1,14 @@
+{
+  "name": "bmad-analyst-skills",
+  "description": "Business Analyst with skills-based workflow loading - brainstorming, research, briefs",
+  "prompt": "file://./bmad-analyst-skills-prompt.md",
+  "model": "claude-opus-4-6",
+  "tools": ["*"],
+  "resources": [
+    "file://_bmad/bmm/config.yaml",
+    "skill://.kiro/skills/brainstorm/SKILL.md",
+    "skill://.kiro/skills/research/SKILL.md",
+    "skill://.kiro/skills/create-brief/SKILL.md"
+  ],
+  "welcomeMessage": "📊 Mary here — brainstorming, research, or product brief? Let's explore."
+}
