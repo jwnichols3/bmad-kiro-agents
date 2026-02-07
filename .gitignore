@@ -1,0 +1,23 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Kiro CLI sessions and local settings
+.kiro/settings/
+.kiro/sessions/
+
+# BMAD output artifacts (generated, not source)
+_bmad-output/
+
+# Node
+node_modules/
+
+# Logs
+*.log
