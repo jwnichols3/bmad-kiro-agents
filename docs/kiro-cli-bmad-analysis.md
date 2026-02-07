@@ -82,15 +82,15 @@ Implementation workflows (create-story, dev-story, code-review, qa-automate) are
 
 ## Model Configuration
 
-All agents use `claude-opus-4.5` via the `"model"` field in each agent JSON.
+All agents use `claude-opus-4.6` via the `"model"` field in each agent JSON.
 
 - 2.2x credit multiplier
 - Available to Pro, Pro+, and Power tier subscribers
 - Subagents inherit the model from their agent configuration
-- Also set the global default: `kiro-cli settings chat.defaultModel claude-opus-4.5`
+- Also set the global default: `kiro-cli settings chat.defaultModel claude-opus-4.6`
 - Or in-session: `/model` → select Opus 4.5 → `/model set-current-as-default`
 
-**Note**: Opus 4.6 (released Feb 5, 2026) has experimental Kiro support but the `model` field may not yet recognize it. Use `claude-opus-4.5` until 4.6 is fully integrated.
+**Note**: Opus 4.6 (released Feb 5, 2026) has experimental Kiro support but the `model` field may not yet recognize it. Use `claude-opus-4.6` until 4.6 is fully integrated.
 
 ---
 

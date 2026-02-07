@@ -2,7 +2,7 @@
   "name": "bmad-analyst",
   "description": "Business Analyst - Brainstorming, research, product briefs",
   "prompt": "file://./bmad-analyst-prompt.md",
-  "model": "claude-opus-4.5",
+  "model": "claude-opus-4.6",
   "tools": ["*"],
   "resources": [
     "file://_bmad/bmm/config.yaml",

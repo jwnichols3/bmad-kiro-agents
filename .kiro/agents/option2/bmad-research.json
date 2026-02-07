@@ -2,7 +2,7 @@
   "name": "bmad-research",
   "description": "Market, domain, competitive, or technical research",
   "prompt": "file://./bmad-research-prompt.md",
-  "model": "claude-opus-4.5",
+  "model": "claude-opus-4.6",
   "tools": [
     "*"
   ],
