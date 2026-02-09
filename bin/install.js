@@ -129,7 +129,11 @@ async function main() {
     const srcRoot = findExtractedDir(tmpDir);
     if (!srcRoot) throw new Error('Failed to extract archive. Try again.');
 
-    copyDirectories(dirs, srcRoot, target);
+    try {
+      copyDirectories(dirs, srcRoot, target);
+    } catch {
+      throw new Error('Failed to write files. Check directory permissions and try again.');
+    }
     cleanup(tmpDir);
 
     console.log('Installing... done');
