@@ -1,0 +1,13 @@
+{
+  "name": "bmad-edit-prd",
+  "description": "Edit and update existing PRD",
+  "prompt": "file://./bmad-edit-prd-prompt.md",
+  "model": "claude-opus-4.6",
+  "tools": [
+    "*"
+  ],
+  "resources": [
+    "file://_bmad/bmm/config.yaml",
+    "file://_bmad/core/tasks/workflow.xml"
+  ]
+}

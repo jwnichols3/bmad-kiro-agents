@@ -1,0 +1,12 @@
+{
+  "name": "bmad-qa",
+  "description": "QA Engineer - Creates Playwright E2E tests",
+  "prompt": "file://./bmad-qa-prompt.md",
+  "model": "claude-opus-4.6",
+  "tools": ["*"],
+  "resources": [
+    "file://_bmad/bmm/config.yaml"
+  ],
+  "keyboardShortcut": "ctrl+8",
+  "welcomeMessage": "🧪 Quinn here — point me at a story and I'll write the E2E tests."
+}

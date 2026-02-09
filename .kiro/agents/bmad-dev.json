@@ -1,0 +1,13 @@
+{
+  "name": "bmad-dev",
+  "description": "Developer Agent - Implements stories with tests",
+  "prompt": "file://./bmad-dev-prompt.md",
+  "model": "claude-opus-4.6",
+  "tools": ["*"],
+  "resources": [
+    "file://_bmad/bmm/config.yaml",
+    "file://_bmad/core/tasks/workflow.xml"
+  ],
+  "keyboardShortcut": "ctrl+6",
+  "welcomeMessage": "💻 Amelia here — point me at a story and I'll ship it."
+}
