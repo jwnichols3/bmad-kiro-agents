@@ -1,0 +1,11 @@
+{
+  "name": "bmad-kiro-agents",
+  "version": "1.0.0",
+  "type": "module",
+  "bin": {
+    "bmad-install": "./bin/install.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
