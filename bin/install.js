@@ -3,6 +3,7 @@
 import { parseArgs } from 'node:util';
 import { execSync } from 'node:child_process';
 import path from 'node:path';
+import readline from 'node:readline';
 import os from 'node:os';
 import fs from 'node:fs';
 
@@ -77,6 +78,21 @@ function copyDirectories(dirs, srcRoot, target) {
   }
 }
 
+function promptUser(target) {
+  return new Promise(resolve => {
+    const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+    const ask = () => {
+      rl.question(`Install to ${target}? (y/N) `, answer => {
+        const a = answer.trim().toLowerCase();
+        if (a === 'y') { rl.close(); resolve(true); }
+        else if (a === 'n' || a === '') { rl.close(); resolve(false); }
+        else ask();
+      });
+    };
+    ask();
+  });
+}
+
 function cleanup(tmpDir) {
   if (tmpDir && fs.existsSync(tmpDir)) {
     fs.rmSync(tmpDir, { recursive: true, force: true });
@@ -103,9 +119,9 @@ async function main() {
 
     if (!values.force) {
       displaySummary(entries);
+      const confirmed = await promptUser(target);
+      if (!confirmed) process.exit(0);
     }
-
-    // TODO: promptUser() — Epic 2, Story 2.2
 
     tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'bmad-'));
     await downloadAndExtract(branch, tmpDir, token);
