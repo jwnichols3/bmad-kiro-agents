@@ -4,13 +4,41 @@ Autonomous BMAD Method agents for Kiro CLI. Enables the full product development
 
 ## Installation
 
-Copy the `agents/` and `skills/` directories to your project's `.kiro/` folder:
+Run a single command from your project root:
 
 ```bash
-cp -r agents/ skills/ /path/to/your/project/.kiro/
+npx github:jwnichols3/bmad-kiro-agents install
 ```
 
-**Prerequisite**: Your project needs the BMAD core files in `_bmad/`. Install from [bmad-method](https://github.com/bmad-code-org/bmad-method).
+This installs three directories into your project:
+
+- `.kiro/agents/` — Agent definitions and prompts
+- `.kiro/skills/` — Workflow skill definitions
+- `_bmad/` — BMAD core methodology files
+
+The installer shows a summary of what will be created or overwritten, then asks for confirmation before writing anything.
+
+### Options
+
+```bash
+# Install to a specific directory
+npx github:jwnichols3/bmad-kiro-agents install ./my-project
+
+# Skip confirmation prompt (useful for scripting)
+npx github:jwnichols3/bmad-kiro-agents install --force
+
+# Install from a specific branch
+npx github:jwnichols3/bmad-kiro-agents install --branch feature/new-agents
+```
+
+### Updating
+
+Re-run the same install command. Existing directories will be overwritten with the latest versions.
+
+### Requirements
+
+- Node.js 18+
+- `tar` (standard on macOS and Linux)
 
 ---
 
@@ -24,14 +52,6 @@ cp -r agents/ skills/ /path/to/your/project/.kiro/
 | 📊 Analyst |                                                        | Research           | Market, domain, competitive, or technical research |
 | 📊 Analyst |                                                        | Create Brief       | Nail down product idea into executive brief        |
 
-**Example:**
-
-```
-> /agent swap → bmad-analyst
-> "Let's brainstorm a new project idea"
-> "Create a product brief for a task management app"
-```
-
 ### Phase 2: Planning (Brief → PRD)
 
 | Agent | Command                                           | Workflow     | Description                                      |
@@ -39,14 +59,6 @@ cp -r agents/ skills/ /path/to/your/project/.kiro/
 | 📋 PM | `kiro-cli chat --trust-all-tools --agent bmad-pm` | Create PRD   | Expert-led facilitation for Product Requirements |
 | 📋 PM |                                                   | Validate PRD | Check PRD is comprehensive and cohesive          |
 | 📋 PM |                                                   | Edit PRD     | Update existing PRD                              |
-
-**Example:**
-
-```
-> /agent swap → bmad-pm
-> "Create a PRD from the product brief"
-> "Validate the PRD for completeness"
-```
 
 ### Phase 3: Solutioning (PRD → Architecture → Epics)
 
@@ -57,17 +69,6 @@ cp -r agents/ skills/ /path/to/your/project/.kiro/
 | 📋 PM                | `kiro-cli chat --trust-all-tools --agent bmad-pm`        | Create Epics & Stories   | Transform PRD into implementation specs  |
 | 📋 PM / 🏗️ Architect |                                                          | Implementation Readiness | Validate PRD, UX, Architecture alignment |
 
-**Example:**
-
-```
-> /agent swap → bmad-architect
-> "Create the architecture document based on the PRD"
-
-> /agent swap → bmad-pm
-> "Create epics and stories from the PRD and architecture"
-> "Check implementation readiness"
-```
-
 ### Phase 4: Implementation (Stories → Code → PR)
 
 | Agent  | Command                                            | Workflow        | Description                             |
@@ -77,17 +78,6 @@ cp -r agents/ skills/ /path/to/your/project/.kiro/
 | 💻 Dev | `kiro-cli chat --trust-all-tools --agent bmad-dev` | Dev Story       | Implement story with tests              |
 | 💻 Dev |                                                    | Code Review     | Adversarial review finding 3-10 issues  |
 | 🧪 QA  | `kiro-cli chat --trust-all-tools --agent bmad-qa`  | QA Automate     | Generate E2E tests for features         |
-
-**Example:**
-
-```
-> /agent swap → bmad-sm
-> "Create the next story from Epic-001"
-
-> /agent swap → bmad-dev
-> "Develop the story we just created"
-> "Run code review and auto-fix issues"
-```
 
 ---
 
@@ -105,33 +95,6 @@ Then:
 Run the epic pipeline for all remaining stories in the current Epic.
 ```
 
-### Manual Orchestration Prompt
-
-If you prefer more control, send this prompt directly to the orchestrator or default agent:
-
-```
-Please run the following flow for all stories in the current Epic. Each task should
-be delegated to the indicated agent via subagent.
-
-**Task 1:** Invoke a subagent with `bmad-sm` and run the create-story workflow for
-the next story in the epic. If the story already exists, confirm completeness and
-update as needed.
-
-**Task 2:** When the story is created, invoke a subagent with `bmad-dev` and run
-the dev-story workflow for the created story.
-
-**Task 3:** When development is complete, invoke a subagent with `bmad-reviewer`
-and run the code-review workflow. Automatically fix all issues found.
-
-**Task 4:** If this is a front-end change, invoke a subagent with `bmad-qa` and
-create a Playwright test suite to validate the story.
-
-**Task 5:** When complete, commit and push the changes, then create a PR using
-`gh pr create`.
-
-Loop through this workflow for all stories in the Epic until complete.
-```
-
 ### Pipeline Per Story
 
 1. Branch: `git checkout -b feature/story-{id}`
@@ -147,14 +110,14 @@ Loop through this workflow for all stories in the Epic until complete.
 
 | Phase          | Agent                  | Key Workflows                                      |
 | -------------- | ---------------------- | -------------------------------------------------- |
-| Analysis       | 📊 Analyst (Mary)      | brainstorm, research, create-brief                 |
-| Planning       | 📋 PM (John)           | create-prd, validate-prd, edit-prd                 |
-| Solutioning    | 🏗️ Architect (Winston) | create-architecture                                |
-| Solutioning    | 🎨 UX Designer (Sally) | create-ux-design                                   |
+| Analysis       | 📊 Analyst             | brainstorm, research, create-brief                 |
+| Planning       | 📋 PM                  | create-prd, validate-prd, edit-prd                 |
+| Solutioning    | 🏗️ Architect           | create-architecture                                |
+| Solutioning    | 🎨 UX Designer         | create-ux-design                                   |
 | Solutioning    | 📋 PM                  | create-epics-and-stories, implementation-readiness |
-| Implementation | 🏃 SM (Bob)            | sprint-planning, create-story                      |
-| Implementation | 💻 Dev (Amelia)        | dev-story, code-review                             |
-| Implementation | 🧪 QA (Quinn)          | qa-automate                                        |
+| Implementation | 🏃 SM                  | sprint-planning, create-story                      |
+| Implementation | 💻 Dev                 | dev-story, code-review                             |
+| Implementation | 🧪 QA                  | qa-automate                                        |
 | Any            | 🧙 BMad Master         | orchestration, help                                |
 
 ---
@@ -162,10 +125,10 @@ Loop through this workflow for all stories in the Epic until complete.
 ## Agent Switching
 
 ```bash
-# Start with specific agent
+# Start with a specific agent
 kiro-cli chat --trust-all-tools --agent bmad-pm
 
-# Or switch during session
+# Or switch during a session
 > /agent swap
 > Choose: bmad-analyst, bmad-pm, bmad-architect, bmad-dev, bmad-sm, bmad-qa
 ```
@@ -173,6 +136,8 @@ kiro-cli chat --trust-all-tools --agent bmad-pm
 ---
 
 ## File Structure
+
+After installation, your project will contain:
 
 ```
 .kiro/
@@ -183,14 +148,75 @@ kiro-cli chat --trust-all-tools --agent bmad-pm
 │   ├── bmad-ux.json + prompt.md
 │   ├── bmad-sm.json + prompt.md
 │   ├── bmad-dev.json + prompt.md
+│   ├── bmad-reviewer.json + prompt.md
 │   ├── bmad-qa.json + prompt.md
-│   └── bmad-orchestrator.json + prompt.md
+│   ├── bmad-orchestrator.json + prompt.md
+│   └── bmad-core-bmad-master.json + prompt.md
 └── skills/
-    └── run-epic/SKILL.md
+    ├── brainstorm/
+    ├── research/
+    ├── create-brief/
+    ├── create-prd/
+    ├── validate-prd/
+    ├── edit-prd/
+    ├── create-architecture/
+    ├── create-ux-design/
+    ├── create-epics/
+    ├── sprint-planning/
+    ├── create-story/
+    ├── dev-story/
+    ├── code-review/
+    ├── qa-automate/
+    └── check-readiness/
+_bmad/
+├── core/        # Core BMAD methodology
+├── bmm/         # BMAD Module Manager
+├── _config/     # Agent and workflow manifests
+└── _memory/     # Persistent context
 ```
 
 ---
 
-## Progress Tracking
+## Working on the Source
 
-See [bmad-for-kiro.md](./bmad-for-kiro.md) for development progress and decisions.
+To contribute or modify the installer and BMAD agents:
+
+```bash
+# Clone the repo
+git clone https://github.com/jwnichols3/bmad-kiro-agents.git
+cd bmad-kiro-agents
+
+# Test the installer locally against a target directory
+node bin/install.js /path/to/test-project
+
+# Test with flags
+node bin/install.js --force /path/to/test-project
+node bin/install.js --branch my-feature /path/to/test-project
+```
+
+### Project Structure
+
+```
+bin/install.js         # CLI installer (~140 lines, zero dependencies)
+bmad-manifest.json     # Declares which directories the installer copies
+package.json           # npm package config (type: module, bin entry)
+.kiro/agents/          # Agent definitions (installed to target projects)
+.kiro/skills/          # Skill workflows (installed to target projects)
+_bmad/                 # BMAD core files (installed to target projects)
+_bmad-output/          # Planning and implementation artifacts
+```
+
+### Adding or Removing Installed Directories
+
+Edit `bmad-manifest.json` — it's a JSON array of directory paths. The installer copies exactly these directories and nothing else. No code changes needed.
+
+### How the Installer Works
+
+1. Fetches `bmad-manifest.json` from the repo via `raw.githubusercontent.com`
+2. Checks which manifest directories already exist in the target
+3. Shows a summary and asks for confirmation (unless `--force`)
+4. Downloads the repo tarball to a temp directory
+5. Extracts and copies only the manifest directories to the target
+6. Cleans up the temp directory
+
+Zero npm dependencies — uses only Node.js 18+ built-ins.
