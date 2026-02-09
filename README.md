@@ -1,6 +1,6 @@
 # BMAD Agents for Kiro CLI
 
-Autonomous BMAD Method agents for Kiro CLI. Enables the full product development lifecycle from idea to deployed code.
+Autonomous [BMAD Method](https://docs.bmad-method.org/) agents for [Kiro CLI](https://kiro.dev/cli/). Enables the full product development lifecycle from idea to deployed code.
 
 ## Installation
 
@@ -18,7 +18,15 @@ This installs three directories into your project:
 
 The installer shows a summary of what will be created or overwritten, then asks for confirmation before writing anything.
 
-### Options
+## Caveats
+
+This is a personal project with the goal of expressing the BMAD method within kiro-cli. The BMAD Method is a fast paced, quickly evolving solution and may have native support for the entire workflow within kiro-cli at some point.
+
+The core workflow (Agile Methodology) is the scope of this effort.
+
+## More Information
+
+### Installation Options
 
 ```bash
 # Install to a specific directory
@@ -108,17 +116,17 @@ Run the epic pipeline for all remaining stories in the current Epic.
 
 ## Quick Reference
 
-| Phase          | Agent                  | Key Workflows                                      |
-| -------------- | ---------------------- | -------------------------------------------------- |
-| Analysis       | 📊 Analyst             | brainstorm, research, create-brief                 |
-| Planning       | 📋 PM                  | create-prd, validate-prd, edit-prd                 |
-| Solutioning    | 🏗️ Architect           | create-architecture                                |
-| Solutioning    | 🎨 UX Designer         | create-ux-design                                   |
-| Solutioning    | 📋 PM                  | create-epics-and-stories, implementation-readiness |
-| Implementation | 🏃 SM                  | sprint-planning, create-story                      |
-| Implementation | 💻 Dev                 | dev-story, code-review                             |
-| Implementation | 🧪 QA                  | qa-automate                                        |
-| Any            | 🧙 BMad Master         | orchestration, help                                |
+| Phase          | Agent          | Key Workflows                                      |
+| -------------- | -------------- | -------------------------------------------------- |
+| Analysis       | 📊 Analyst     | brainstorm, research, create-brief                 |
+| Planning       | 📋 PM          | create-prd, validate-prd, edit-prd                 |
+| Solutioning    | 🏗️ Architect   | create-architecture                                |
+| Solutioning    | 🎨 UX Designer | create-ux-design                                   |
+| Solutioning    | 📋 PM          | create-epics-and-stories, implementation-readiness |
+| Implementation | 🏃 SM          | sprint-planning, create-story                      |
+| Implementation | 💻 Dev         | dev-story, code-review                             |
+| Implementation | 🧪 QA          | qa-automate                                        |
+| Any            | 🧙 BMad Master | orchestration, help                                |
 
 ---
 
@@ -179,7 +187,7 @@ _bmad/
 
 ## Working on the Source
 
-To contribute or modify the installer and BMAD agents:
+To contribute or modify the installer and agents:
 
 ```bash
 # Clone the repo
