@@ -18,13 +18,14 @@ cp -r agents/ skills/ /path/to/your/project/.kiro/
 
 ### Phase 1: Analysis (Idea → Brief)
 
-| Agent | Command | Workflow | Description |
-|-------|---------|----------|-------------|
-| 📊 Analyst | `kiro-cli --agent bmad-analyst` | Brainstorm Project | Guided facilitation through creative techniques |
-| 📊 Analyst | | Research | Market, domain, competitive, or technical research |
-| 📊 Analyst | | Create Brief | Nail down product idea into executive brief |
+| Agent      | Command                                                | Workflow           | Description                                        |
+| ---------- | ------------------------------------------------------ | ------------------ | -------------------------------------------------- |
+| 📊 Analyst | `kiro-cli chat --trust-all-tools --agent bmad-analyst` | Brainstorm Project | Guided facilitation through creative techniques    |
+| 📊 Analyst |                                                        | Research           | Market, domain, competitive, or technical research |
+| 📊 Analyst |                                                        | Create Brief       | Nail down product idea into executive brief        |
 
 **Example:**
+
 ```
 > /agent swap → bmad-analyst
 > "Let's brainstorm a new project idea"
@@ -33,13 +34,14 @@ cp -r agents/ skills/ /path/to/your/project/.kiro/
 
 ### Phase 2: Planning (Brief → PRD)
 
-| Agent | Command | Workflow | Description |
-|-------|---------|----------|-------------|
-| 📋 PM | `kiro-cli --agent bmad-pm` | Create PRD | Expert-led facilitation for Product Requirements |
-| 📋 PM | | Validate PRD | Check PRD is comprehensive and cohesive |
-| 📋 PM | | Edit PRD | Update existing PRD |
+| Agent | Command                                           | Workflow     | Description                                      |
+| ----- | ------------------------------------------------- | ------------ | ------------------------------------------------ |
+| 📋 PM | `kiro-cli chat --trust-all-tools --agent bmad-pm` | Create PRD   | Expert-led facilitation for Product Requirements |
+| 📋 PM |                                                   | Validate PRD | Check PRD is comprehensive and cohesive          |
+| 📋 PM |                                                   | Edit PRD     | Update existing PRD                              |
 
 **Example:**
+
 ```
 > /agent swap → bmad-pm
 > "Create a PRD from the product brief"
@@ -48,14 +50,15 @@ cp -r agents/ skills/ /path/to/your/project/.kiro/
 
 ### Phase 3: Solutioning (PRD → Architecture → Epics)
 
-| Agent | Command | Workflow | Description |
-|-------|---------|----------|-------------|
-| 🏗️ Architect | `kiro-cli --agent bmad-architect` | Create Architecture | Document technical decisions |
-| 🎨 UX Designer | `kiro-cli --agent bmad-ux` | Create UX Design | Plan UX patterns and look/feel |
-| 📋 PM | `kiro-cli --agent bmad-pm` | Create Epics & Stories | Transform PRD into implementation specs |
-| 📋 PM / 🏗️ Architect | | Implementation Readiness | Validate PRD, UX, Architecture alignment |
+| Agent                | Command                                                  | Workflow                 | Description                              |
+| -------------------- | -------------------------------------------------------- | ------------------------ | ---------------------------------------- |
+| 🏗️ Architect         | `kiro-cli chat --trust-all-tools --agent bmad-architect` | Create Architecture      | Document technical decisions             |
+| 🎨 UX Designer       | `kiro-cli chat --trust-all-tools --agent bmad-ux`        | Create UX Design         | Plan UX patterns and look/feel           |
+| 📋 PM                | `kiro-cli chat --trust-all-tools --agent bmad-pm`        | Create Epics & Stories   | Transform PRD into implementation specs  |
+| 📋 PM / 🏗️ Architect |                                                          | Implementation Readiness | Validate PRD, UX, Architecture alignment |
 
 **Example:**
+
 ```
 > /agent swap → bmad-architect
 > "Create the architecture document based on the PRD"
@@ -67,15 +70,16 @@ cp -r agents/ skills/ /path/to/your/project/.kiro/
 
 ### Phase 4: Implementation (Stories → Code → PR)
 
-| Agent | Command | Workflow | Description |
-|-------|---------|----------|-------------|
-| 🏃 SM | `kiro-cli --agent bmad-sm` | Sprint Planning | Generate sprint status tracking |
-| 🏃 SM | | Create Story | Prepare story with full context for dev |
-| 💻 Dev | `kiro-cli --agent bmad-dev` | Dev Story | Implement story with tests |
-| 💻 Dev | | Code Review | Adversarial review finding 3-10 issues |
-| 🧪 QA | `kiro-cli --agent bmad-qa` | QA Automate | Generate E2E tests for features |
+| Agent  | Command                                            | Workflow        | Description                             |
+| ------ | -------------------------------------------------- | --------------- | --------------------------------------- |
+| 🏃 SM  | `kiro-cli chat --trust-all-tools --agent bmad-sm`  | Sprint Planning | Generate sprint status tracking         |
+| 🏃 SM  |                                                    | Create Story    | Prepare story with full context for dev |
+| 💻 Dev | `kiro-cli chat --trust-all-tools --agent bmad-dev` | Dev Story       | Implement story with tests              |
+| 💻 Dev |                                                    | Code Review     | Adversarial review finding 3-10 issues  |
+| 🧪 QA  | `kiro-cli chat --trust-all-tools --agent bmad-qa`  | QA Automate     | Generate E2E tests for features         |
 
 **Example:**
+
 ```
 > /agent swap → bmad-sm
 > "Create the next story from Epic-001"
@@ -92,10 +96,11 @@ cp -r agents/ skills/ /path/to/your/project/.kiro/
 Run the full pipeline without manual intervention:
 
 ```bash
-kiro-cli --agent bmad-orchestrator
+kiro-cli chat --agent bmad-orchestrator --trust-all-tools
 ```
 
 Then:
+
 ```
 Run the epic pipeline for all remaining stories in the current Epic.
 ```
@@ -140,17 +145,17 @@ Loop through this workflow for all stories in the Epic until complete.
 
 ## Quick Reference
 
-| Phase | Agent | Key Workflows |
-|-------|-------|---------------|
-| Analysis | 📊 Analyst (Mary) | brainstorm, research, create-brief |
-| Planning | 📋 PM (John) | create-prd, validate-prd, edit-prd |
-| Solutioning | 🏗️ Architect (Winston) | create-architecture |
-| Solutioning | 🎨 UX Designer (Sally) | create-ux-design |
-| Solutioning | 📋 PM | create-epics-and-stories, implementation-readiness |
-| Implementation | 🏃 SM (Bob) | sprint-planning, create-story |
-| Implementation | 💻 Dev (Amelia) | dev-story, code-review |
-| Implementation | 🧪 QA (Quinn) | qa-automate |
-| Any | 🧙 BMad Master | orchestration, help |
+| Phase          | Agent                  | Key Workflows                                      |
+| -------------- | ---------------------- | -------------------------------------------------- |
+| Analysis       | 📊 Analyst (Mary)      | brainstorm, research, create-brief                 |
+| Planning       | 📋 PM (John)           | create-prd, validate-prd, edit-prd                 |
+| Solutioning    | 🏗️ Architect (Winston) | create-architecture                                |
+| Solutioning    | 🎨 UX Designer (Sally) | create-ux-design                                   |
+| Solutioning    | 📋 PM                  | create-epics-and-stories, implementation-readiness |
+| Implementation | 🏃 SM (Bob)            | sprint-planning, create-story                      |
+| Implementation | 💻 Dev (Amelia)        | dev-story, code-review                             |
+| Implementation | 🧪 QA (Quinn)          | qa-automate                                        |
+| Any            | 🧙 BMad Master         | orchestration, help                                |
 
 ---
 
@@ -158,7 +163,7 @@ Loop through this workflow for all stories in the Epic until complete.
 
 ```bash
 # Start with specific agent
-kiro-cli --agent bmad-pm
+kiro-cli chat --trust-all-tools --agent bmad-pm
 
 # Or switch during session
 > /agent swap
