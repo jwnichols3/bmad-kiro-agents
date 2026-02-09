@@ -9,21 +9,9 @@ import fs from 'node:fs';
 
 const REPO = 'jwnichols3/bmad-kiro-agents';
 
-function getGitHubToken() {
-  try {
-    return execSync('gh auth token', { encoding: 'utf8' }).trim();
-  } catch {
-    return null;
-  }
-}
-
-function authHeaders(token) {
-  return token ? { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' } : {};
-}
-
-async function fetchManifest(branch, token) {
-  const url = `https://api.github.com/repos/${REPO}/contents/bmad-manifest.json?ref=${branch}`;
-  const res = await fetch(url, { headers: { ...authHeaders(token), Accept: 'application/vnd.github.v3.raw' } });
+async function fetchManifest(branch) {
+  const url = `https://raw.githubusercontent.com/${REPO}/${branch}/bmad-manifest.json`;
+  const res = await fetch(url);
   if (!res.ok) {
     if (res.status === 404) throw new Error(`Branch '${branch}' not found. Check the branch name and try again.`);
     throw new Error('Unable to reach GitHub. Check your connection and try again.');
@@ -35,9 +23,9 @@ async function fetchManifest(branch, token) {
   }
 }
 
-async function downloadAndExtract(branch, tmpDir, token) {
-  const url = `https://api.github.com/repos/${REPO}/tarball/${branch}`;
-  const res = await fetch(url, { headers: authHeaders(token) });
+async function downloadAndExtract(branch, tmpDir) {
+  const url = `https://github.com/${REPO}/archive/refs/heads/${branch}.tar.gz`;
+  const res = await fetch(url);
   if (!res.ok) throw new Error('Failed to download archive. Check your connection and try again.');
   const buf = Buffer.from(await res.arrayBuffer());
   const tarball = path.join(tmpDir, 'repo.tar.gz');
@@ -112,9 +100,8 @@ async function main() {
 
     const branch = values.branch;
     const target = positionals[0] ? path.resolve(positionals[0]) : process.cwd();
-    const token = getGitHubToken();
 
-    const dirs = await fetchManifest(branch, token);
+    const dirs = await fetchManifest(branch);
     const entries = checkExisting(dirs, target);
 
     if (!values.force) {
@@ -124,7 +111,7 @@ async function main() {
     }
 
     tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'bmad-'));
-    await downloadAndExtract(branch, tmpDir, token);
+    await downloadAndExtract(branch, tmpDir);
 
     const srcRoot = findExtractedDir(tmpDir);
     if (!srcRoot) throw new Error('Failed to extract archive. Try again.');
