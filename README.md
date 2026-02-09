@@ -97,16 +97,43 @@ kiro-cli --agent bmad-orchestrator
 
 Then:
 ```
-Run the full pipeline for all remaining stories in Epic-001.
-For each story: create branch, implement, review, test, PR, merge.
+Run the epic pipeline for all remaining stories in the current Epic.
 ```
 
-**Pipeline per story:**
+### Manual Orchestration Prompt
+
+If you prefer more control, send this prompt directly to the orchestrator or default agent:
+
+```
+Please run the following flow for all stories in the current Epic. Each task should
+be delegated to the indicated agent via subagent.
+
+**Task 1:** Invoke a subagent with `bmad-sm` and run the create-story workflow for
+the next story in the epic. If the story already exists, confirm completeness and
+update as needed.
+
+**Task 2:** When the story is created, invoke a subagent with `bmad-dev` and run
+the dev-story workflow for the created story.
+
+**Task 3:** When development is complete, invoke a subagent with `bmad-reviewer`
+and run the code-review workflow. Automatically fix all issues found.
+
+**Task 4:** If this is a front-end change, invoke a subagent with `bmad-qa` and
+create a Playwright test suite to validate the story.
+
+**Task 5:** When complete, commit and push the changes, then create a PR using
+`gh pr create`.
+
+Loop through this workflow for all stories in the Epic until complete.
+```
+
+### Pipeline Per Story
+
 1. Branch: `git checkout -b feature/story-{id}`
-2. SM Agent: Create story via subagent
-3. Dev Agent: Implement via subagent
-4. Reviewer: Code review + auto-fix via subagent
-5. QA Agent: E2E tests (if frontend) via subagent
+2. SM Agent (`bmad-sm`): Create story via subagent
+3. Dev Agent (`bmad-dev`): Implement via subagent
+4. Reviewer (`bmad-reviewer`): Code review + auto-fix via subagent
+5. QA Agent (`bmad-qa`): E2E tests (if frontend) via subagent
 6. Git: Commit, push, create PR, merge
 
 ---
