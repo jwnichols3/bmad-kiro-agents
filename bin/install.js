@@ -53,6 +53,21 @@ function findExtractedDir(tmpDir) {
   return entries[0] ? path.join(tmpDir, entries[0]) : null;
 }
 
+function checkExisting(dirs, target) {
+  return dirs.map(name => ({ name, exists: fs.existsSync(path.join(target, name)) }));
+}
+
+function displaySummary(entries) {
+  const maxLen = Math.max(...entries.map(e => e.name.length));
+  console.log('');
+  for (const { name, exists } of entries) {
+    const padded = (name + '/').padEnd(maxLen + 2);
+    const status = exists ? 'exists (will overwrite)' : 'new';
+    console.log(`  ${padded} → ${status}`);
+  }
+  console.log('');
+}
+
 function copyDirectories(dirs, srcRoot, target) {
   for (const dir of dirs) {
     const src = path.join(srcRoot, dir);
@@ -84,9 +99,13 @@ async function main() {
     const token = getGitHubToken();
 
     const dirs = await fetchManifest(branch, token);
+    const entries = checkExisting(dirs, target);
 
-    // TODO: checkExisting(dirs, target) — Epic 2
-    // TODO: promptUser() — Epic 2
+    if (!values.force) {
+      displaySummary(entries);
+    }
+
+    // TODO: promptUser() — Epic 2, Story 2.2
 
     tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'bmad-'));
     await downloadAndExtract(branch, tmpDir, token);
