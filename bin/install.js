@@ -133,8 +133,11 @@ async function main() {
     cleanup(tmpDir);
 
     console.log('Installing... done');
-
-    // TODO: success handoff — Epic 4
+    console.log('');
+    console.log('BMAD installed. Next step:');
+    console.log('  kiro-cli chat --agent bmad-analyst --trust-all-tools');
+    console.log('');
+    console.log('Docs: https://github.com/jwnichols3/bmad-kiro-agents#readme');
 
   } catch (err) {
     cleanup(tmpDir);
