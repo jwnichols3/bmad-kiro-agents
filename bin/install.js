@@ -99,7 +99,8 @@ async function main() {
     });
 
     const branch = values.branch;
-    const target = positionals[0] ? path.resolve(positionals[0]) : process.cwd();
+    const args = positionals.filter(a => a !== 'install');
+    const target = args[0] ? path.resolve(args[0]) : process.cwd();
 
     const dirs = await fetchManifest(branch);
     const entries = checkExisting(dirs, target);
